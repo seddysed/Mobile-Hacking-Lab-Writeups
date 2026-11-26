@@ -40,7 +40,7 @@ com.mobilehackinglab.securenotes.secretprovider
 
 The provider declaration shown does not specify a permission requirement. This makes it an entry point worth investigating, although the declaration alone does not prove that an external query will succeed. Full permission handling and runtime behavior still need to be considered.
 
-![Manifest showing the enabled and exported SecretDataProvider](screenshots/exported-provider.png)
+![Manifest showing the enabled and exported SecretDataProvider](Screenshots/exported-provider.png)
 
 *The provider declaration identifies the component and its authority. The exported launcher activity below it is not, by itself, evidence of a vulnerability.*
 
@@ -54,7 +54,7 @@ If decryption returns a non-null string, the method creates a `MatrixCursor` wit
 
 Although the parameter is called `selection`, this implementation uses it to receive a PIN rather than as a SQL selection expression.
 
-![Query method parsing the pin selection and returning a Secret cursor](screenshots/provider-query.png)
+![Query method parsing the pin selection and returning a Secret cursor](Screenshots/provider-query.png)
 
 *The method connects a caller-supplied PIN to decryption and exposes the returned plaintext through a cursor. No attempt counter or delay is visible in this method.*
 
@@ -75,7 +75,7 @@ Following `decryptSecret()` leads to `generateKeyFromPin()`. Together, these met
 
 The derived key initializes the cipher for decryption. The method decrypts `encryptedSecret` and converts the resulting bytes into a string. If an exception occurs, it returns null.
 
-![PBKDF2 key derivation and AES-CBC decryption methods](screenshots/key-derivation-decryption.png)
+![PBKDF2 key derivation and AES-CBC decryption methods](Screenshots/key-derivation-decryption.png)
 
 *The relevant weakness is the limited PIN search space combined with an available offline test, rather than the AES key length itself.*
 
@@ -83,11 +83,11 @@ The derived key initializes the cipher for decryption. The method decrypts `encr
 
 The provider's `onCreate()` method opens `config.properties` from the APK assets. It reads and Base64-decodes `encryptedSecret`, `salt`, and `iv`, then parses `iterationCount` as an integer.
 
-![Provider initialization loading cryptographic values from assets](screenshots/provider-initialization.png)
+![Provider initialization loading cryptographic values from assets](Screenshots/provider-initialization.png)
 
 Inspecting the asset reveals the ciphertext, salt, IV, and an iteration count of `10000`.
 
-![config.properties containing the encrypted secret, salt, IV, and iteration count](screenshots/config-properties.png)
+![config.properties containing the encrypted secret, salt, IV, and iteration count](Screenshots/config-properties.png)
 
 *These values allow us to reproduce the application's decryption process outside the original application.*
 
@@ -160,7 +160,7 @@ The captured output includes the following readable result:
 Valid PIN: 2580, Secret : CTF{D1d_y0u_gu3ss_1t!?}
 ```
 
-![Logcat showing candidate outputs and PIN 2580 recovering the readable lab flag](screenshots/offline-pin-recovery.png)
+![Logcat showing candidate outputs and PIN 2580 recovering the readable lab flag](Screenshots/offline-pin-recovery.png)
 
 *PIN `2580` produces the readable flag, while several other candidates produce unreadable output. The screenshot demonstrates plaintext recovery; it does not show a separate challenge-submission confirmation.*
 
