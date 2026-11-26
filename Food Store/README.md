@@ -4,8 +4,6 @@
 
 This lab demonstrates an Android SQL injection vulnerability in a local SQLite database. The vulnerability exists in the application's user-registration flow, where user-controlled input is concatenated directly into an SQL `INSERT` statement.
 
-By exploiting this flaw during account creation, I was able to create an account with the `isPro` value set to `1`, resulting in privilege escalation from a standard account to a pro account.
-
 ## Objectives
 
 - Analyze an Android APK using JADX
