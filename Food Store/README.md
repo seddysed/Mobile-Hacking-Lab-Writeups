@@ -199,6 +199,3 @@ database.execSQL(
 - MobileHackingLab — Authorized vulnerable-lab environment
 - ADB/logcat — Optional runtime observation and debugging
 
-## Disclaimer
-
-This repository documents a security exercise performed in an intentionally vulnerable, authorized training environment. The techniques shown are for educational use, secure-development learning, and authorized security testing only.
