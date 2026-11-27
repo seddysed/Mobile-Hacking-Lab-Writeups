@@ -130,16 +130,16 @@ Add your screenshots to this section:
    `Screenshots/login-screen.png`
 
 2. Standard account showing `$100` credit  
-   `Screenshots/regular-user.png`
+   ![](Screenshots/regular-user.png)
 
 3. Decompiled `LoginActivity` in JADX  
-   `Screenshots/jadx-login-activity.png`
+   ![](Screenshots/jadx-login-activity.png)
 
 4. Vulnerable SQL construction in `DBHelper`  
-   `Screenshots/vulnerable-dbhelper.png`
+   ![](Screenshots/vulnerable-dbhelper.png)
 
 5. Successfully created pro account showing `$10,000` credit  
-   `Screenshots/pro-user-result.png`
+   ![](Screenshots/pro-user-result.png)
 
 ## Remediation
 
