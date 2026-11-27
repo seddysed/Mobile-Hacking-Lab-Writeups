@@ -127,19 +127,19 @@ Although this challenge uses a local SQLite database, the underlying issue is ap
 Add your screenshots to this section:
 
 1. Initial login and signup screen  
-   `screenshots/login-screen.png`
+   `Screenshots/login-screen.png`
 
 2. Standard account showing `$100` credit  
-   `screenshots/regular-user.png`
+   `Screenshots/regular-user.png`
 
 3. Decompiled `LoginActivity` in JADX  
-   `screenshots/jadx-login-activity.png`
+   `Screenshots/jadx-login-activity.png`
 
 4. Vulnerable SQL construction in `DBHelper`  
-   `screenshots/vulnerable-dbhelper.png`
+   `Screenshots/vulnerable-dbhelper.png`
 
 5. Successfully created pro account showing `$10,000` credit  
-   `screenshots/pro-user-result.png`
+   `Screenshots/pro-user-result.png`
 
 ## Remediation
 
